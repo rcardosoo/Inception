@@ -4,6 +4,7 @@ require([
     "dojo/domReady!"
 ], function (WebMap, MapView) {
 
+    
 
     var webmap = new WebMap({
         portalItem: {
