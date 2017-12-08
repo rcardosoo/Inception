@@ -1,18 +1,17 @@
 require([
     "esri/Map",
-    "esri/views/MapView",
+    "esri/views/SceneView",
+    "esri/WebMap",
     "dojo/domReady!"
-], function (WebMap, MapView) {
-
-    
+], function (Map, SceneView, WebMap) {
 
     var webmap = new WebMap({
         portalItem: {
-          id: "41281c51f9de45edaf1c8ed44bb10e30" // This was created in the "Style a web map" and "Configure pop-ups" design labs
+          id: "93ecf4c2d8c34766b94d5a5becbf0cff" // This was created in the "Style a web map" and "Configure pop-ups" design labs
         }
       });
 
-    var view = new MapView({
+    var view = new SceneView({
         container: "viewDiv",
         map: webmap
     });
