@@ -55,7 +55,7 @@ require([
             while (typeof webmap.layers.getItemAt(i) != 'undefined') {
                 layers[i] = {
                     layer: webmap.layers.getItemAt(i),
-                    title: "Legenda"
+                    title: webmap.layers.title
                 };
                 i++;
             }
