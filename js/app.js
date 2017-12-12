@@ -17,26 +17,46 @@ require([
     BasemapGallery,
     Expand,
     Legend
-) {
+) {     
+        //====== Atributos globais
         var webmap = createWidget("webMap");
         var view = createWidget("sceneView");
-        var layerList = createWidget("layerList");
-        var searchWidget = createWidget("search");
         var basemapGallery = createWidget("basemapGallery");
-        var bgExpand = createWidget("expand");
-        
-        view.then(function() {
-            var legend = createWidget("legend");
-            legend.startup();
-            view.ui.add(legend, "bottom-left");
-        });
-        view.ui.add(searchWidget, {
-            position: "top-right",
-            index: 0
-        });
-        view.ui.add(bgExpand, "top-left");
-        view.ui.add(layerList, "top-right");
 
+        //====== Componentes
+        addLayerList();
+        addSearch();
+        addBGExpand();
+        addLegend();
+        
+        //======= Definição de funções
+        function addLayerList() {
+            //instancia o objeto layerlist
+            var layerList = createWidget("layerList");
+            //adiciona na página
+            view.ui.add(layerList, "top-right");
+        }
+
+        function addSearch() {
+            var searchWidget = createWidget("search");
+            view.ui.add(searchWidget, {
+                position: "top-right",
+                index: 0
+            });
+        }
+
+        function addBGExpand() {  
+            var bgExpand = createWidget("expand");
+            view.ui.add(bgExpand, "top-left");
+        }
+
+        function addLegend() {
+            view.then(function() {
+                var legend = createWidget("legend");
+                legend.startup();
+                view.ui.add(legend, "bottom-left");
+            });
+        }
 
         function createWidget(name) {
             if (name == 'webMap') {
