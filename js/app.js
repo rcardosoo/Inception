@@ -17,22 +17,23 @@ require([
     BasemapGallery,
     Expand,
     Legend
-) {     
+) {
         //====== Atributos globais
         var webmap = createWidget("webMap");
         var view = createWidget("sceneView");
         var basemapGallery = createWidget("basemapGallery");
+        var layerList = createWidget("layerList");
 
         //====== Componentes
         addLayerList();
         addSearch();
         addBGExpand();
         addLegend();
-        
+
         //======= Definição de funções
         function addLayerList() {
             //instancia o objeto layerlist
-            var layerList = createWidget("layerList");
+            //var layerList = createWidget("layerList");
             //adiciona na página
             view.ui.add(layerList, "top-right");
         }
@@ -45,13 +46,15 @@ require([
             });
         }
 
-        function addBGExpand() {  
+        function addBGExpand() {
             var bgExpand = createWidget("expand");
+            var expandList = createWidget("expandList");
+            view.ui.add(expandList, "top-right");
             view.ui.add(bgExpand, "top-left");
         }
 
         function addLegend() {
-            view.then(function() {
+            view.then(function () {
                 var legend = createWidget("legend");
                 legend.startup();
                 view.ui.add(legend, "bottom-left");
@@ -67,11 +70,10 @@ require([
                 });
 
             } else if (name == 'sceneView') {
-                return new SceneView ({
+                return new SceneView({
                     container: "viewDiv",
                     map: webmap
                 });
-
             } else if (name == 'layerList') {
                 return new LayerList({
                     view: view
@@ -81,7 +83,6 @@ require([
                 return new Search({
                     view: view
                 });
-
             } else if (name == 'basemapGallery') {
                 return new BasemapGallery({
                     view: view,
@@ -95,8 +96,14 @@ require([
                     expandIconClass: "esri-icon-basemap"
                 });
 
+            } else if (name == 'expandList') {
+                return new Expand({
+                    view: view,
+                    content: layerList.container,
+                    expandIconClass: "esri-icon-layer-list"
+                });
             } else if (name == 'legend') {
-                var i=0;
+                var i = 0;
                 var layers = Array();
                 while (typeof webmap.layers.getItemAt(i) != 'undefined') {
                     layers[i] = {
