@@ -9,7 +9,8 @@ require([
     "esri/widgets/Legend",
 
     "dojo/domReady!"
-], function (Map,
+], function (
+    Map,
     SceneView,
     WebMap,
     LayerList,
@@ -18,24 +19,23 @@ require([
     Expand,
     Legend
 ) {
+    
         //====== Atributos globais
-        var webmap = createWidget("webMap");
-        var view = createWidget("sceneView");
-        var basemapGallery = createWidget("basemapGallery");
-        var layerList = createWidget("layerList");
+        var webmap          = createWidget("webMap");
+        var view            = createWidget("sceneView");
+        var basemapGallery  = createWidget("basemapGallery");
+        
 
         //====== Componentes
         addLayerList();
         addSearch();
-        addBGExpand();
         addLegend();
+        addBgExpand();
 
-        //======= Definição de funções
+        //======= Adicionando widgets ao mapa
         function addLayerList() {
-            //instancia o objeto layerlist
-            //var layerList = createWidget("layerList");
-            //adiciona na página
-            view.ui.add(layerList, "top-right");
+            var LayerList = createWidget("layerList");
+            view.ui.add(LayerList, "top-right");
         }
 
         function addSearch() {
@@ -46,22 +46,21 @@ require([
             });
         }
 
-        function addBGExpand() {
-            var bgExpand = createWidget("expand");
-            var expandList = createWidget("expandList");
-            view.ui.add(expandList, "top-right");
+        function addBgExpand() {
+            var bgExpand = createWidget("bgExpand");
             view.ui.add(bgExpand, "top-left");
         }
 
         function addLegend() {
+            var legend = createWidget("legend");
             view.then(function () {
-                var legend = createWidget("legend");
                 legend.startup();
                 view.ui.add(legend, "bottom-left");
             });
         }
 
-        function createWidget(name) {
+         //===== Funções para criação de widgets
+         function createWidget(name) {
             if (name == 'webMap') {
                 return new WebMap({
                     portalItem: {
@@ -84,23 +83,16 @@ require([
                     view: view
                 });
             } else if (name == 'basemapGallery') {
-                return new BasemapGallery({
+                return new BasemapGallery ({
                     view: view,
                     container: document.createElement("div")
                 });
 
-            } else if (name == 'expand') {
-                return new Expand({
+            } else if (name == 'bgExpand') {
+                return new Expand ({
                     view: view,
                     content: basemapGallery.container,
                     expandIconClass: "esri-icon-basemap"
-                });
-
-            } else if (name == 'expandList') {
-                return new Expand({
-                    view: view,
-                    content: layerList.container,
-                    expandIconClass: "esri-icon-layer-list"
                 });
             } else if (name == 'legend') {
                 var i = 0;
@@ -119,3 +111,7 @@ require([
         }
 
     });
+
+
+
+
