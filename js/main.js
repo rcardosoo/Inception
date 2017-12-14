@@ -25,7 +25,6 @@ require([
         var view            = createWidget("sceneView");
         var basemapGallery  = createWidget("basemapGallery");
         
-
         //====== Componentes
         addLayerList();
         addSearch();
@@ -109,7 +108,6 @@ require([
                 });
             }
         }
-
     });
 
 
