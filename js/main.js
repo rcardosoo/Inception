@@ -7,7 +7,6 @@ require([
     "esri/widgets/BasemapGallery",
     "esri/widgets/Expand",
     "esri/widgets/Legend",
-    "esri/widgets/BasemapToggle",
     // Bootstrap
     "bootstrap/Collapse",
     "bootstrap/Dropdown",
@@ -27,7 +26,6 @@ require([
     BasemapGallery,
     Expand,
     Legend,
-    BasemapToggle,
     Collapse, 
     Dropdown, 
     CalciteMaps, 
@@ -38,17 +36,13 @@ require([
     var webmap = createWidget("webMap");
     var view = createWidget("sceneView");
     var basemapGallery = createWidget("basemapGallery");
-    var basemapToggle = createWidget("basemapToggle");
-    // Popup and panel sync
-    view.then(function(){
-        CalciteMapArcGISSupport.setPopupPanelSync(view);
-    });
+  
 
     //====== Componentes
     addLayerList();
     addSearch();
     addLegend();
-
+    addBgExpand();
     
     //======= Adicionando widgets ao mapa
     function addLayerList() {
@@ -60,8 +54,10 @@ require([
         var searchWidget = createWidget("search");
         CalciteMapArcGISSupport.setSearchExpandEvents(searchWidget);
     }
-    function addBaseMapToggle() {
-        view.ui.add(basemapToggle, "bottom-right"); 
+
+    function addBgExpand() {
+        var bgExpand = createWidget("bgExpand");
+        view.ui.add(bgExpand, "top-right");
     }
 
     function addLegend() {
@@ -98,16 +94,17 @@ require([
             }, "searchWidgetDiv");
 
         } else if (name == 'basemapGallery') {
-            return new BasemapGallery({
+            return new BasemapGallery ({
                 view: view,
-                container: "basemapGalleryDiv"
+                container: document.createElement("div")
             });
 
-        } else if (name == 'basemapToggle') {
-            return new BasemapToggle({
+        } else if (name == 'bgExpand') {
+            return new Expand ({
                 view: view,
-                secondBasemap: "satellite"
-              });
+                content: basemapGallery.container,
+                expandIconClass: "esri-icon-basemap"
+            });
         } else if (name == 'legend') {
             var i = 0;
             var layers = Array();
