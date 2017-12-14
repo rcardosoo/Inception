@@ -48,7 +48,7 @@ require([
     addLayerList();
     addSearch();
     addLegend();
-    addBgExpand();
+
     
     //======= Adicionando widgets ao mapa
     function addLayerList() {
