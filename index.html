@@ -1,79 +1,37 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+    crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+    crossorigin="anonymous"></script>
 
-    <!-- Calcite Bootstrap -->
-    <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-bootstrap.min-v0.2.css">
-
-    <!-- Calcite Maps -->
-    <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.2.css">
-
-    <!-- ArcGIS JS 4.0 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.2/flatly/bootstrap.min.css">
     <link rel="stylesheet" href="https://js.arcgis.com/4.5/esri/css/main.css">
-
     <link rel="stylesheet" href="css/style.css">
 
-</head>
-
-<body class="calcite-maps calcite-nav-top">
-
-    <!-- Navbar -->
-
-    <nav class="navbar calcite-navbar navbar-fixed-top calcite-text-light calcite-bg-dark" style="margin-bottom: 20px;">
-        <!-- Menu -->
-        <div class="dropdown calcite-dropdown calcite-text-dark calcite-bg-light" role="presentation">
-            <a class="dropdown-toggle" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <span class="glyphicon glyphicon-globe" id="logo"></span>
-            </a>
-            
-        </div>
-        <!-- Title -->
-        <div class="calcite-title calcite-overflow-hidden">
-            <span class="calcite-title-main">Inception Map</span>
-            <span class="calcite-title-divider hidden-xs"></span>
-            <span class="calcite-title-sub hidden-xs">Rafael Cardoso</span>
-        </div>
-        <!-- Nav -->
-        <ul class="nav navbar-nav calcite-nav">
-            <li>
-                <div class="calcite-navbar-search calcite-search-expander">
-                    <div id="searchWidgetDiv"></div>
-                </div>
-            </li>
-        </ul>
-    </nav>
-    <!--/.calcite-navbar -->
-
-    <!-- Map  -->
-    <div class="calcite-map calcite-map-absolute">
-        <div id="tabContainer" class="tab-content">
-            <br />
-            <div id="viewDiv"></div>
-        </div>
-    </div>
-    <!-- /.calcite-map -->
-
-
-    <script>
-        var dojoConfig = {
-            packages: [{
-                name: "bootstrap",
-                location: "https://esri.github.io/calcite-maps/dist/vendor/dojo-bootstrap"
-            },
-            {
-                name: "calcite-maps",
-                location: "https://esri.github.io/calcite-maps/dist/js/dojo"
-            }]
-        };
-    </script>
-
-    <!-- ArcGIS JS 4.0 -->
+    <!-- Js -->
     <script src="https://js.arcgis.com/4.5/"></script>
     <script src="js/main.js"></script>
 
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary menubar">
+        <a class="navbar-brand" href="#">
+            <span class="glyphicon glyphicon-globe globo"></span>
+            <span class="pipe">|</span>
+            <span class="titulo">Inception</span>
+        </a>        
+    </nav>
+    <div id="viewDiv"></div>
 </body>
 
 </html>
